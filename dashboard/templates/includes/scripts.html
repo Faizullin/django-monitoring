@@ -1,0 +1,84 @@
+<script src="/static/assets/js/vendor-all.min.js"></script>
+<script src="/static/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/assets/js/pcoded.min.js"></script>
+<script src="/static/assets/js/dark-mode.js"></script>
+<script>
+    $(document).ready(function(){
+        var modal = $('#dashboard-form-modal');
+        var saveButton = $('#save-button'),
+            saveEditButton = $("#save-edit-button");
+        saveButton.click(function() {
+          const form = $('#dashboard-form')
+          var url = form.attr('action');
+          var data = form.serialize();
+          var data = new FormData(document.getElementById('dashboard-form'));
+          $.ajax({
+            type: 'POST',
+            url,
+            processData: false,
+            contentType: false,
+            data,
+            success: (response) => {
+              if (response) {
+                modal.modal('hide');
+                location.reload();
+              }
+            },
+            error: (response) =>{
+              console.log(response)
+              form.html(response);
+            }
+          } );
+        });
+        $('.edit-button').click(function(){
+          openEditModalProf(this)
+        })
+        openEditModalProf = (el) => {
+            
+            const loadUrl = $(el).data('load-url')
+            const url = $(el).data('url')
+            //var url = form.attr('item-id');
+            $.get(loadUrl || url, {}, (response) => {
+              if (response) {
+                modal.find('.modal-body').html(response)
+                modal.modal('show');
+              } else {
+                
+                form.html(response);
+              }
+            } );
+          }
+        saveEditButton.click(function() {
+          const form = $('#dashboard-form')
+          var url = form.attr('action');
+          var data = new FormData(document.getElementById('dashboard-form'));
+          $.ajax({
+            type: 'POST',
+            url,
+            processData: false,
+            contentType: false,
+            data,
+            success: (response) => {
+              if (response) {
+                modal.modal('hide');
+                location.reload();
+              }
+            },
+            error: (response) =>{
+              form.html(response);
+            }
+          })
+        });
+        document.body.classList.add("dark")
+      });
+</script>
+<style>
+    .error {
+        border: 1px solid red !important;
+    }
+
+    .error-text {
+        color: red !important;
+        font-size: 12px !important;
+    }
+  </style>

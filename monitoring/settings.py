@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h(tj$%876#l(ci!)v9af79tk40(ens$*948af4=#%aww)^ae&u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=False
+DEBUG = True
 MY_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    #'django.middleware.locale.LocaleMiddleware'
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -123,10 +124,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'kk'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Almaty'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
@@ -195,3 +199,26 @@ if MY_DEBUG:
 
 # from django_processinfo import app_settings as PROCESSINFO
 # django_processinfo.ADD_INFO = True
+
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGES = (
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('kk', _('Kazakh')),
+)
+# LANGUAGES = [
+#     ('kk', 'Kazakh'),
+#     ('en', 'English'),
+# ]
+
+# # Specify the custom names for the languages
+# LANGUAGE_CUSTOM_NAMES = {
+#     'kk': 'Қазақша',  # Custom name for Kazakh
+#     'en': 'English',  # Custom name for English
+# }
+
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]

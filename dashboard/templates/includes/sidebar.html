@@ -6,34 +6,40 @@
                 <div class="b-bg">
                     <i class="feather icon-trending-up"></i>
                 </div>
-                <span class="b-title">Dashboard</span>
+                <span class="b-title">{{ _("Dashboard") }}</span>
             </a>
             <a class="mobile-menu" id="mobile-collapse" href="{% url 'dashboard:index' %}"><span></span></a>
         </div>
         <div class="navbar-content scroll-div">
             <ul class="nav pcoded-inner-navbar">
                 <li class="nav-item pcoded-menu-caption">
-                    <label>Navigation</label>
+                    <label>{{ _("Navigation") }}</label>
                 </li>
                 <li data-username="User Dashboard Page" 
                     class="nav-item {% if 'dashboard:index' in segment %} active {% endif %}">
                     <a href="{% url 'dashboard:index' %}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-shop"></i></span>
-                            <span class="pcoded-mtext">Welcome</span></a>
+                            <span class="pcoded-mtext">{{ _("Welcome") }}</span></a>
+                </li>
+                <li data-username="Profile Dashboard Page" 
+                    class="nav-item {% if 'dashboard:profile' in segment %} active {% endif %}">
+                    <a href="{% url 'dashboard:profile' %}" class="nav-link">
+                        <span class="pcoded-micon"><i class="feather icon-shop"></i></span>
+                            <span class="pcoded-mtext">{{ _("Profile") }}</span></a>
                 </li>
 
                 <li class="nav-item pcoded-menu-caption">
-                    <label>Tables</label>
+                    <label>{{ _("Tables") }}</label>
                 </li>
                 <li data-username="User Dashboard Page" 
                     class="nav-item {% if 'user_index' in segment %} active {% endif %}">
                     <a href="{% url 'dashboard:user_index' %}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-shop"></i></span>
-                            <span class="pcoded-mtext">Users</span></a>
+                            <span class="pcoded-mtext">{{ _("Users") }}</span></a>
                 </li>
 
                 <li class="nav-item pcoded-menu-caption">
-                    <label>Server list</label>
+                    <label>{{ _("Server list") }}</label>
                 </li>
                 {% for server in servers %}
                     <li data-username="Charts Morris" 
@@ -43,13 +49,13 @@
                     </li>
                 {% endfor %}
                 <li class="nav-item pcoded-menu-caption">
-                    <label>Action</label>
+                    <label>{{ _("Action") }}</label>
                 </li>
 
 
                 <li data-username="Disabled Menu" class="nav-item">
                     <a href="{% url 'dashboard_auth:logout' %}" class="nav-link">
-                        <span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">Logout</span>
+                        <span class="pcoded-micon"><i class="feather icon-power"></i></span><span class="pcoded-mtext">{{ _("Logout") }}</span>
                     </a>
                 </li>
             </ul>

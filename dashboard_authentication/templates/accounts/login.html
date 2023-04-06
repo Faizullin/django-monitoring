@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body text-center">
 
-                    <h3 class="mb-4">Login</h3>
+                    <h3 class="mb-4">{{ _("Login") }}</h3>
 
                     <span class="mb-0 text-muted">
                         {% if msg %}
@@ -40,24 +40,13 @@
                             {{ form.password }}
                         </div>
                         
-                        <button type="submit" name="login" class="btn btn-primary shadow-2 mb-4">Login</button>
+                        <button type="submit" name="login" class="btn btn-primary shadow-2 mb-4">{{ _("Login") }}</button>
 
                     </form>
 
-                    <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'dashboard_auth:register' %}" >Sign UP</a></p>
+                    <p class="mb-0 text-muted">Don’t have an account? <a href="{% url 'dashboard_auth:register' %}" >{{ _("Sign Up") }}</a></p>
 
-                    <br />
-
-                    {% if GITHUB_AUTH %}
-                    <div class="mx-2">
-                        <form method="post" action="/social_login/github/login/?next=%2F">
-                            {% csrf_token %}
-                            <button class="btn btn-light" type="submit" style="background-color: #ffffff; border-color: #ffffff;">
-                                <i class="feather icon-github auth-icon"></i></button>
-                        </form>
-                        <span class="mx-1">Sign IN with GitHub</span>
-                    </div>                   
-                    {% endif %}   
+                    <br />   
 
                 </div>
             </div>

@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Profile {% endblock %} 
+{% block title %} {{ _("Profile") }} {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -50,20 +50,20 @@
                                                 <div class="col-sm-6 mb-4">
                                                     <div class="form-group">
                                                         <label for="fn">First Name</label>
-                                                        <input type="email" class="form-control" id="fn" aria-describedby="emailHelp" placeholder="Your first name">
+                                                        <input type="email" class="form-control" id="fn" aria-describedby="emailHelp" placeholder="Your first name" value="{{ user.first_name }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 mb-4">
                                                     <div class="form-group">
                                                         <label for="ln">Last Name</label>
-                                                        <input type="email" class="form-control" id="ln" aria-describedby="emailHelp" placeholder="Your last name">
+                                                        <input type="email" class="form-control" id="ln" aria-describedby="emailHelp" placeholder="Your last name" value="{{ user.last_name }}">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="col-sm-12 mb-4">
                                                     <div class="form-group">
                                                         <label for="add">Address</label>
-                                                        <input type="email" class="form-control" id="add" aria-describedby="emailHelp" placeholder="Your address">
+                                                        <input type="email" class="form-control" id="add" aria-describedby="emailHelp" placeholder="Your address" value="{{ user.address }}">
                                                         <small id="addd" class="form-text text-muted">This is your shipments address</small>
                                                     </div>
                                                 </div>

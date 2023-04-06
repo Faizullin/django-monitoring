@@ -1,0 +1,153 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-06 20:40+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+#: .\monitoring\settings.py:205
+msgid "English"
+msgstr ""
+
+#: .\monitoring\settings.py:206
+msgid "Russian"
+msgstr ""
+
+#: .\monitoring\settings.py:207
+msgid "Kazakh"
+msgstr ""
+
+msgid "Navigation"
+msgstr "Навигация"
+
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+msgstr "Навигация"
+
+msgid "Users"
+msgstr "Қолданушылар"
+
+msgid "Age"
+msgstr "Жас"
+
+msgid "Dashboard"
+msgstr "Бақылау Тақтасы"
+
+msgid "Welcome"
+msgstr "Қош келдіңіз"
+
+msgid "Tables"
+msgstr "Кестелер"
+
+msgid "Server list"
+msgstr "Серверлер"
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Action"
+msgstr "Әрекет"
+
+msgid "Login"
+msgstr "Кіру"
+
+msgid "Sign Up"
+msgstr "Регистрация"
+
+msgid "Logout"
+msgstr "Шығу"
+
+msgid "Statistics" 
+msgstr "Статистика"
+
+msgid "System" 
+msgstr "Система"
+
+msgid "Status" 
+msgstr "Статус"
+
+msgid "System Statistics" 
+msgstr "Система Статистикасы"
+
+msgid "Charts"
+msgstr "Графиктер"
+
+msgid "CPU Usage Percentage" 
+msgstr "CPU пайдалану пайызы"
+
+msgid "CPU Times"
+msgstr "CPU уақыттары"
+
+msgid "CPU Frequency"
+msgstr "CPU жиілігі"
+
+msgid "CPU Usage Percentage Min"
+msgstr "CPU пайдалану пайызы Мин"
+
+msgid "CPU Usage Percentage Max"
+msgstr "CPU пайдалану пайызы Mакс"
+
+msgid "Average network throughputs"
+msgstr "Желінің орташа өткізу қабілеті"
+
+msgid "CPU Load"
+msgstr "CPU жүктемесі"
+
+msgid "Average disk usage"
+msgstr "Дискіні орташа пайдалану"
+
+msgid "Memory Usage"
+msgstr "Жедел Жадты пайдалану"
+
+msgid "Network activity"
+msgstr "Желі әрекеті"
+
+msgid "Disk Usage"
+msgstr "Дискіні пайдалану"
+
+msgid "Browser Used & Traffic Reports"
+msgstr "Браузер пайдаланылған және трафик есептері"
+
+msgid "Sessions"
+msgstr "Сеанстар"
+
+msgid "Channel"
+msgstr "Арна"
+
+msgid "Browser"
+msgstr "Браузер"
+
+msgid "User Activivites"
+msgstr "Пайдаланушы әрекеттері"
+
+msgid "Name"
+msgstr"Аты"
+
+msgid "Email"
+msgstr "Электрондық пошта"
+
+msgid "Timestamp"
+msgstr "Уақыт белгісі"
+
+msgid "Processes"
+msgstr "Процестер"
+
+msgid "Memory"
+msgstr "Жедел Жад"
+
+msgid "space used"
+msgstr "Пайдаланылған орын"
+
+msgid "free"
+msgstr "Қолжетімді"

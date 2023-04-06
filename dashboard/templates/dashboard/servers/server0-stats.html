@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Charts {% endblock %} 
+{% block title %} {{ segment }} {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -18,12 +18,12 @@
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="page-header-title">
-                                        <h5 class="m-b-10">Morris Chart</h5>
+                                        <h5 class="m-b-10">{{ _("Charts") }}</h5>
                                     </div>
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{% url 'dashboard:index' %}"><i class="feather icon-home"></i></a></li>
                                         <li class="breadcrumb-item"><a href="">{{ segment }}</a></li>
-                                        <li class="breadcrumb-item"><a href="">Statisics</a></li>
+                                        <li class="breadcrumb-item"><a href="">{{ _("Statistics") }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                 <div class="col-xl-4">
                                     <div class="card">
                                         <div class="card-header">
-                                            System Statistics
+                                            {{ _("System Statistics") }}
                                         </div>
                                         <div class="card-block">
                                             <table class="table table-striped  table-responsive">
@@ -46,26 +46,26 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>CPU Usage Percentage</td>
+                                                        <td>{{ _("CPU Usage Percentage") }}</td>
                                                         <td>{{ data.system_data.cpu_percent }}%</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>CPU Times</td>
+                                                        <td>{{ _("CPU Times") }}</td>
                                                         <td>
                                                             <p>User: {{ data.cpu_times.user }}s</p>
                                                             <p>System: {{ data.cpu_times.system }}s</p>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>CPU Frequency</td>
+                                                        <td>{{ _("CPU Frequency") }}</td>
                                                         <td>{{ data.cpu_freq.current }} MHz</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>CPU Usage Percentage Min</td>
+                                                        <td>{{ _("CPU Usage Percentage Min") }}</td>
                                                         <td>Min: {{ data.cpu_freq.min }} MHz</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>CPU Usage Percentage Max</td>
+                                                        <td>{{ _("CPU Usage Percentage Max") }}</td>
                                                         <td>Min: {{ data.cpu_freq.max }} MHz</td>
                                                     </tr>
                                                 </tbody>
@@ -78,7 +78,7 @@
                                         <div class="col-xl-3">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h5>Average network throughputs</h5>
+                                                    <h5>{{ _("Average network throughputs") }}</h5>
                                                 </div>
                                                 <div class="card-block">
                                                     <canvas id="data-network-chart" class="ChartShadow" style="height:150px"></canvas>
@@ -88,7 +88,7 @@
                                         <div class="col-xl-3">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h5>CPU Load</h5>
+                                                    <h5>{{ _("CPU Load") }}</h5>
                                                 </div>
                                                 <div class="card-block">
                                                     <canvas id="data-cpu_percent-chart" class="ChartShadow" style="height:150px" ></canvas>
@@ -98,7 +98,7 @@
                                         <div class="col-xl-3">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h5>Average disk usage</h5>
+                                                    <h5>{{ _("Average disk usage") }}</h5>
                                                 </div>
                                                 <div class="card-block">
                                                     <canvas id="data-avg_disk_usage-chart" class="ChartShadow" style="height:150px" ></canvas>
@@ -108,7 +108,7 @@
                                         <div class="col-xl-3">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h5>Memory Usage</h5>
+                                                    <h5>{{ _("Memory Usage") }}</h5>
                                                 </div>
                                                 <div class="card-block">
                                                     <canvas id="data-mem_usage-chart" class="ChartShadow" style="height:150px"></canvas>
@@ -121,7 +121,7 @@
                                 <div class="col-xl-7">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Network activity</h5>
+                                            <h5>{{ _("Network activity") }}</h5>
                                         </div>
                                         <div class="card-block">
                                             <canvas id="data-net_io_counters-chart" class="ChartShadow" style="height:150px"></canvas>
@@ -131,7 +131,7 @@
                                 <div class="col-xl-4">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Disk Usage</h5>
+                                            <h5>{{ _("Disk Usage") }}</h5>
                                         </div>
                                         <div class="card-block">
                                             <canvas id="data-disk_percent-chart" class="ChartShadow" style="height:250px"></canvas>
@@ -143,7 +143,7 @@
                                         <div class="card-header">
                                             <div class="row align-items-center">
                                                 <div class="col">                      
-                                                    <h5 class="card-title">Browser Used & Traffic Reports</h5>                      
+                                                    <h5 class="card-title">{{ _("Browser Used & Traffic Reports") }}</h5>                      
                                                 </div><!--end col-->
                                                 <div class="col-auto"> 
                                                     <ul class="nav nav-pills-custom nav-pills mb-0" id="pills-tab" role="tablist">
@@ -164,8 +164,8 @@
                                                         <table class="table mb-0">
                                                             <thead class="thead-light">
                                                                 <tr>
-                                                                    <th class="border-top-0">Channel</th>
-                                                                    <th class="border-top-0">Sessions</th>
+                                                                    <th class="border-top-0">{{ _("Channel") }}</th>
+                                                                    <th class="border-top-0">{{ _("Sessions") }}</th>
                                                                     <th class="border-top-0">Prev.Period</th>
                                                                     <th class="border-top-0">% Change</th>
                                                                 </tr><!--end tr-->
@@ -212,8 +212,8 @@
                                                         <table class="table mb-0">
                                                             <thead class="thead-light">
                                                                 <tr>
-                                                                    <th class="border-top-0">Browser</th>
-                                                                    <th class="border-top-0">Sessions</th>
+                                                                    <th class="border-top-0">{{ _("Browser") }}</th>
+                                                                    <th class="border-top-0">{{ _("Sessions") }}</th>
                                                                     <th class="border-top-0">Bounce Rate</th>
                                                                     <th class="border-top-0">Transactions</th>
                                                                 </tr><!--end tr-->
@@ -258,7 +258,7 @@
                                         <div class="card-header">
                                             <div class="row align-items-center">
                                                 <div class="col">                      
-                                                    <h5 class="card-title">User Activivites</h5>                      
+                                                    <h5 class="card-title">{{ _("User Activivites") }}</h5>                      
                                                 </div><!--end col-->
                                                 <div class="col-auto"> 
                                                     <ul class="nav nav-pills-custom nav-pills mb-0" id="Users_Activity-pills-tab" role="tablist">
@@ -283,9 +283,9 @@
                                                             <thead class="thead-light">
                                                                 <tr>
                                                                     <th class="border-top-0">Id</th>
-                                                                    <th class="border-top-0">Name</th>
-                                                                    <th class="border-top-0">Email</th>
-                                                                    <th class="border-top-0">Timestamp</th>
+                                                                    <th class="border-top-0">{{ _("Name") }}</th>
+                                                                    <th class="border-top-0">{{ _("Email") }}</th>
+                                                                    <th class="border-top-0">{{ _("Timestamp") }}</th>
                                                                 </tr><!--end tr-->
                                                             </thead>
                                                             <tbody>
@@ -311,7 +311,7 @@
                                         <div class="card-header">
                                             <div class="row align-items-center">
                                                 <div class="col">                      
-                                                    <h5 class="card-title">Processes</h5>                      
+                                                    <h5 class="card-title">{{ _("Processes") }}</h5>                      
                                                 </div>
                                             </div> 
                                         </div> 
@@ -321,11 +321,11 @@
                                                     <table class="table">
                                                         <thead class="thead-light">
                                                         <tr>
-                                                            <th>PID</th>
-                                                            <th>Name</th>
-                                                            <th>Status</th>
-                                                            <th>CPU %</th>
-                                                            <th>Memory</th>
+                                                            <th>{{ _("PID") }}</th>
+                                                            <th>{{ _("Name") }}</th>
+                                                            <th>{{ _("Status") }}</th>
+                                                            <th>{{ _("CPU %") }}</th>
+                                                            <th>{{ _("Memory") }}</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -407,13 +407,13 @@
                 data: {
                     labels: [],
                     datasets: [{
-                        label: 'Bytes Sent',
+                        label: '{{ _("Bytes Sent") }}',
                         data: [],
                         borderColor: 'rgba(255, 99, 132, 1)',//rgb(0, 192, 0)
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderWidth: 1
                     }, {
-                        label: 'Bytes Received',
+                        label: '{{ _("Bytes Received") }}',
                         data: [],
                         borderColor: 'rgba(54, 162, 235, 1)',//'rgb(170, 0, 0)'
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -443,7 +443,7 @@
                 data: {
                     labels: ['2006','2007','2008'], // data labels go here
                     datasets: [{
-                        label: 'Login', // chart title
+                        label: '{{ _("Login") }}', // chart title
                         data: [
                             10,20,30
                         ], // chart data goes here
@@ -451,7 +451,7 @@
                         borderColor: '#1de9b6',
                         borderWidth: 1
                     },{
-                        label: 'Register', // chart title
+                        label: '{{ _("Register") }}', // chart title
                         data: [30,20,32], // chart data goes here
                         //backgroundColor: '#1de9b6',
                         borderColor: '#04a9f5',
@@ -474,7 +474,7 @@
                 data: {
                     labels: ['Load', 'free'],
                     datasets: [{
-                    label: 'Temp',
+                    label: '{{ _("Temp") }}',
                     data: [ (system_data.system_data.cpu_temp)*8 , (100 - system_data.system_data.cpu_temp)*8 ],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.6)', // Красный
@@ -499,9 +499,9 @@
             setChart('data-disk_percent-chart',{
                 type: 'pie',
                 data: {
-                    labels: ['space used', 'free'],
+                    labels: ['{{ _("space used") }}', '{{ _("free") }}'],
                     datasets: [{
-                    label: 'Disk capacity loading',
+                    label: '{{ _("Disk capacity loading") }}',
                     data: [ (system_data.system_data.disk_usage)*8 , (100 - system_data.system_data.disk_usage)*8 ],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.6)', // Красный
@@ -526,9 +526,9 @@
             setChart('data-network-chart',{
                 type: 'doughnut',
                 data: {
-                    labels: ['Activated', ''],
+                    labels: ['{{ _("Activated") }}', ''],
                     datasets: [{
-                    label: 'First dataset',
+                    label: '{{ _("Network") }}',
                     data: [ 87, 100 - 87],
                     backgroundColor: ['#ff6384', '#ededed']
                     }]
@@ -539,9 +539,9 @@
             setChart('data-avg_disk_usage-chart',{
                 type: 'doughnut',
                 data: {
-                    labels: ['Activated', ''],
+                    labels: ['{{ _("space used") }}', '{{ _("free") }}'],
                     datasets: [{
-                    label: 'First dataset',
+                    label: '{{ _("Average Disk Usage") }}',
                     data: [ system_data.load_avg, 100-system_data.load_avg],
                     backgroundColor: ['#00baa6', '#ededed']
                     }]
@@ -551,9 +551,9 @@
             setChart('data-mem_usage-chart',{
                 type: 'doughnut',
                 data: {
-                    labels: ['Activated', ''],
+                    labels: ['{{ _("space used") }}', '{{ _("free") }}'],
                     datasets: [{
-                    label: 'First dataset',
+                    label: '{{ _("Memory Usage") }}',
                     data: [ 87, 100 - 87],
                     backgroundColor: ['#cc65fe', '#ededed']
                     }]
@@ -568,8 +568,6 @@
                 success: (response) => {
                     var now = new Date();
                     var time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
-
-
                     charts['data-cpu_percent-chart'].data.datasets[0].data = [response.data.system_data.cpu_percent , 100 - response.data.system_data.cpu_percent]
                     charts['data-mem_usage-chart'].data.datasets[0].data = [response.data.system_data.mem_percent , 100 - response.data.system_data.mem_percent]
                     charts['data-disk_percent-chart'].data.datasets[0].data = [response.data.system_data.disk_percent , 100 - response.data.system_data.disk_percent]

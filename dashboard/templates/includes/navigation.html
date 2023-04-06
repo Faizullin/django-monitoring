@@ -6,7 +6,7 @@
             <div class="b-bg">
                 <i class="feather icon-trending-up"></i>
             </div>
-            <span class="b-title">Datta Able</span>
+            <span class="b-title">{{ _("Dashboard") }}</span>
         </a>
     </div>
     <a class="mobile-menu" id="mobile-header" href="javascript:">
@@ -16,18 +16,18 @@
         <ul class="navbar-nav mr-auto">
             <li><a href="javascript:" class="full-screen" onclick="javascript:toggleFullScreen()"><i
                     class="feather icon-maximize"></i></a></li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown">Actions</a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="javascript:">Action 1</a></li>
                     <li><a class="dropdown-item" href="javascript:">Another action</a></li>
                     <li><a class="dropdown-item" href="javascript:">Something else here</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <div class="main-search">
                     <div class="input-group">
-                        <input type="text" id="m-search" class="form-control" placeholder="Search . . .">
+                        <input type="text" id="m-search" class="form-control" placeholder="{{ _("Search") }} . . .">
                         <a href="javascript:" class="input-group-append search-close">
                             <i class="feather icon-x input-group-text"></i>
                         </a>
@@ -45,13 +45,13 @@
                     <input type="checkbox" id="theme-switch" class="d-none">
                 </label>
             </li>
-            <li>
+            <!-- <li>
                 <div class="dropdown">
                     <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown"><i
                             class="icon feather icon-bell"></i></a>
                     <div class="dropdown-menu dropdown-menu-right notification">
                         <div class="noti-head">
-                            <h6 class="d-inline-block m-b-0">Notifications</h6>
+                            <h6 class="d-inline-block m-b-0">{{ _("Notifications") }}</h6>
                             <div class="float-right">
                                 <a href="javascript:" class="m-r-10">mark as read</a>
                                 <a href="javascript:">clear all</a>
@@ -66,7 +66,7 @@
                                     <img class="img-radius" src="{{ ASSETS_ROOT }}/images/user/avatar-1.jpg"
                                          alt="Generic placeholder image">
                                     <div class="media-body">
-                                        <p><strong>John Doe</strong><span class="n-time text-muted"><i
+                                        <p><strong>{{ request.user.username }}</strong><span class="n-time text-muted"><i
                                                 class="icon feather icon-clock m-r-10"></i>30 min</span></p>
                                         <p>New ticket Added</p>
                                     </div>
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-            </li>
+            </li> -->
             <li>
                 <div class="dropdown drp-user">
                     <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
@@ -111,7 +111,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
-                            <img src="{{ ASSETS_ROOT }}/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
+                            <!-- <img src="{{ ASSETS_ROOT }}/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image"> -->
                             <span>
                                 {{ request.user.username }}    
                             </span>
@@ -120,10 +120,10 @@
                             </a>
                         </div>
                         <ul class="pro-body">
-                            <li><a href="/profile.html" class="dropdown-item"><i class="feather icon-user"></i>
-                                Profile</a></li>
+                            <li><a href="{% url 'dashboard:profile' %}" class="dropdown-item"><i class="feather icon-user"></i>
+                                {{ _("Profile") }}</a></li>
                             <li><a href="{% url 'dashboard_auth:logout' %}" class="dropdown-item">
-                                <i class="feather icon-lock"></i> Logout</a>
+                                <i class="feather icon-lock"></i> {{ _("Logout") }}</a>
                             </li>
                         </ul>
                     </div>

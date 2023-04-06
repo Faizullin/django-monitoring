@@ -17,17 +17,23 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.shortcuts import redirect, render
+from django.urls import reverse
 
+def redirect_to_dashboard(request):
+    return redirect(reverse('dashboard:index'))
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/auth/', include('dashboard_authentication.urls',namespace='dashboard_auth')),
     path('dashboard/', include('dashboard.urls',namespace='dashboard')),
     path('api/dashboard/', include('dashboard_api.urls',namespace='dashboard_api')),
+    path('', redirect_to_dashboard)
 ]
-from django.shortcuts import render
+
 def page_not_found_view(request, exception):
     return render(request, 'dashboard/page-404.html', status=404)
+
 handler404 = page_not_found_view
 
 if settings.DEBUG:

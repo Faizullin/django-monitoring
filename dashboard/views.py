@@ -21,7 +21,8 @@ def index(request):
 
 @login_required()
 def profile(request):
-    context = {'segment': 'profile', 'user': CustomUser.objects.get(id = request.id)},
+    user = CustomUser.objects.get(id = request.user.id)
+    context = {'segment': 'dashboard:profile', 'user': user }
     html_template = loader.get_template('dashboard/profile.html')
     return HttpResponse(html_template.render(context, request))
 
@@ -33,7 +34,7 @@ def servers(request, server):
         'servers': ['server0','server1']
     }
     context = getStatData(context)
-    return render(request, 'dashboard/servers/server0-stats.html', context)
+    return render(request, f'dashboard/servers/{server}-stats.html', context)
 
 @login_required()
 def pages(request):

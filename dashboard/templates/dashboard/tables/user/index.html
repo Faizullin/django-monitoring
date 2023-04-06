@@ -19,12 +19,12 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-12">
                                         <div class="page-header-title">
-                                            <h5 class="m-b-10">Dashboard Tables</h5>
+                                            <h5 class="m-b-10">{{ _("Dashboard Tables") }}</h5>
                                         </div>
                                         <ul class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
-                                            <li class="breadcrumb-item"><a href="#!">Tables</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Users</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'dashboard:index' %}"><i class="feather icon-home"></i></a></li>
+                                            <li class="breadcrumb-item"><a href="#!">{{ _("Tables") }}</a></li>
+                                            <li class="breadcrumb-item"><a href="#">{{ _("Users") }}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                                     <div class="col-xl-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5>Users</h5>
+                                                <h5>{{ _("Users") }}</h5>
                                                 <span class="d-block m-t-5"></span><button class="btn btn-primary create-button" data-toggle="modal" data-target="#dashboard-form-modal" data-url="{% url 'dashboard:user_create' %}">Create</button>
                                                 {% if filterset %}
                                                     <form action="" method="get" class="form form-inline">

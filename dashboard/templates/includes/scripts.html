@@ -19,14 +19,14 @@
             contentType: false,
             data,
             success: (response) => {
+              console.log(response)
               if (response) {
                 modal.modal('hide');
                 location.reload();
               }
             },
             error: (response) =>{
-              console.log(response)
-              form.html(response);
+              form.html(response.responseText);
             }
           } );
         });

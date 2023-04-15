@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/auth/', include('dashboard_authentication.urls',namespace='dashboard_auth')),
     path('dashboard/', include('dashboard.urls',namespace='dashboard')),
+    path('dashboard/drive/', include('storage_drive.urls',namespace='storage_drive')),
     path('api/dashboard/', include('dashboard_api.urls',namespace='dashboard_api')),
     path('', redirect_to_dashboard)
 ]

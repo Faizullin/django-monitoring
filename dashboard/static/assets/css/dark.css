@@ -91,3 +91,32 @@ body.dark {
     background-color: transparent; }
 
 /*# sourceMappingURL=dark.css.map */
+
+
+
+body.dark .main-body .dropdown-menu {
+  background-color: #2C394B !important; 
+}
+body.dark .dropdown-menu .dropdown-item {
+  background-color: #2C394B !important; 
+  color: white;
+}
+body.dark .main-body .dropdown-menu .dropdown-item:hover {
+  color: white; }
+
+body.dark .main-body .dropdown.show:before {
+  color: #2C394B;
+ }
+body.dark .main-body .dropdown .profile-notification .pro-head {
+  background-color: #082032; }
+body.dark .main-body .dropdown.drp-user.show:before {
+  color: #082032 !important; }
+body.dark .main-body .dropdown .dropdown-menu li:hover a {
+  color: white; }
+body.dark .main-body .dropdown .profile-notification .pro-body li a {
+  color: white; }
+
+
+body.dark #dashboard-form-modal * {
+  color: #2C394B !important;
+}

@@ -1,8 +1,6 @@
-from django import template
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http404
-from django.template import loader
+from django.http import JsonResponse, Http404
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 

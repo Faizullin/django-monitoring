@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-h(tj$%876#l(ci!)v9af79tk40(ens$*948af4=#%aww)^ae&u
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-MY_DEBUG = True
+MY_DEBUG = False
+DOMAIN_PATH = 'rfid-kassa.com'
 
 ALLOWED_HOSTS = ['*']
 
@@ -52,7 +53,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    #'django_processinfo.middlewares.ProcessInfoMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -142,8 +142,9 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 #MY
-STATIC_ROOT =  '/home/rfid-kassa.com/public_html/static'
-MEDIA_ROOT = '/home/rfid-kassa.com/public_html/media'
+
+STATIC_ROOT =  f'/home/{DOMAIN_PATH}/public_html/static'
+MEDIA_ROOT = f'/home/{DOMAIN_PATH}/public_html/media'
 if MY_DEBUG:
     STATIC_ROOT =  os.path.join(BASE_DIR, 'static') 
     MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 

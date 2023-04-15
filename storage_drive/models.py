@@ -1,37 +1,22 @@
+import os
+from django.core.files.storage import default_storage
+
 from django.db import models
 from dashboard.models import CustomUser
 from django.urls import reverse
 
-# class Folder(models.Model):
-#     name = models.CharField(max_length=128)
-#     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
-#     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+AVAILABLE_SPACE = 10
+def get_space_available(request_user):
+    folder_path = f'uploads/user_{request_user.pk}'
+    if not default_storage.exists(folder_path):
+        return 0
+    total_size = 0
+    _, filenames = default_storage.listdir(folder_path)
+    for f in filenames:
+        fp = os.path.join(folder_path, f)
+        total_size += default_storage.size(fp)
 
-#     def __str__(self):
-#         full_name = f'{self.name}'
-#         if self.parent:
-#             full_name = f'{self.parent}::' + full_name
-#         return full_name
-
-#     @property
-#     def depth(self):
-#         if not self.parent:
-#             return 0
-#         else:
-#             return self.parent.depth + 1
-
-#     @property
-#     def get_list_url(self):
-#         return reverse('storage_drive:index')
-
-#     def parent_url(self):
-#         url_list = []
-#         temp = self
-#         while(temp.parent):
-#             temp = temp.parent
-#             url_list.append(reverse('storage_drive:index') + '?id=' + str(temp.pk))
-#         return 
-    
+    return round(total_size / (1024 * 1024),6)
 
 def user_directory_path(instance, filename):
     return f'uploads/user_{instance.owner.pk}/{filename}'

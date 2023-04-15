@@ -7,16 +7,19 @@ from rest_framework.response import Response
 import psutil, time
 from .serializers import UserSerializer, SystemDataSerializer
 from dashboard.models import *
-#from django_processinfo.models import ProcessInfo
+from storage_drive.models import get_space_available, AVAILABLE_SPACE
 
-def getStatData(context):
+def getStatData():
     # load_avg = psutil.getloadavg()
     # pids = psutil.pids()
     lastSystemData =  SystemData.objects.last()
+    context = {
+        'data': {}
+    }
     context['data']['user_acts'] = {
         #'timestamp': [ user.date_joined for user in user_acts ],
-        'login': CustomUser.objects.count(),
-        'register': CustomUser.objects.filter(last_login__isnull=False).count(),
+        'login': CustomUser.objects.filter(last_login__isnull=False).count(),
+        'register': CustomUser.objects.count(),
     }
     context['data']['new_users'] = UserSerializer(CustomUser.objects.order_by('-id')[:10], many = True).data
     context['data']["cpu_times"] = psutil.cpu_times()
@@ -47,11 +50,7 @@ class ApiServerData(APIView):
     # authentication_classes = [JWTAuthentication, ]
     # permission_classes = (permissions.IsAuthenticated,)
     def get(self, request, *args, **kwargs):
-        context = {
-            'segment': 'monitoring_server1',
-            'data': {},
-        }
-        context = getStatData(context)
+        context = getStatData()
         return Response(data = context)
     
 
@@ -76,8 +75,22 @@ def save_system_data():
         if current_count > MAX_SAVE_NUMBER:
             first_n_records = SystemData.objects.order_by('id').filter(id__lt = (system_data.pk - MAX_SAVE_NUMBER))
             first_n_records.delete()
-            
+
+         
         time.sleep(7)
+
+def save_user_storage_drive():
+    global MAX_SAVE_NUMBER
+    global started
+    print("Start save_user_storage_drive")  
+    while True:
+        users = CustomUser.objects.all()
+        for user in users:
+            used_space_by_user = get_space_available(user)
+            user.used_space = round(used_space_by_user,4)
+            user.save()
+        
+        time.sleep(14)
 
 from threading import Thread
 def apiStartRecord(request):
@@ -86,6 +99,9 @@ def apiStartRecord(request):
         return JsonResponse({"data":"Already started!"})
     elif not started:
         started = True
-        t1 = Thread(target=save_system_data,daemon=True)
-        t1.start()      
+        t1 = Thread(target=save_system_data, daemon=True)
+        t2 = Thread(target=save_user_storage_drive, daemon=True)
+
+        t1.start()
+        t2.start()  
         return JsonResponse({"data":"Starting"})

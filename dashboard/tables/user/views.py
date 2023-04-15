@@ -4,6 +4,7 @@ from django.http import JsonResponse, Http404
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, redirect
 
+from dashboard.context_processors import default_context
 from dashboard.models import CustomUser
 from .forms import *
 import django_filters
@@ -36,7 +37,7 @@ class UserTable(tables.Table):
 
     class Meta:
         model = CustomUser
-        fields = ("id","username", "email", "address", "age", "date_joined" )
+        fields = ("id","username", "email", "address", "age","used_space", "date_joined" )
         attrs = {
             'class': 'table table-hover',
         }
@@ -53,9 +54,12 @@ class UserListView(LoginRequiredMixin, tables.SingleTableMixin, FilterView):
     #paginate_by = 1
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context["form"] = UserForm()
-        context['segment'] = 'user_index'
-        context['servers'] = ['server0','server1']
+        context = super().get_context_data()
+        context.update(default_context())
+        context.update({
+            "form": UserForm(),
+            'segment': 'user_index'
+        })
         return context
     
     def get_queryset(self, *args, **kwargs):

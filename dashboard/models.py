@@ -10,6 +10,7 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     email = models.EmailField("email", unique=True, blank=True)
+    used_space = models.FloatField('used space', null=False, default=0)
 
 class SystemData(models.Model):
     cpu_temp = models.FloatField()

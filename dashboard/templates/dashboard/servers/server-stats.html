@@ -7,9 +7,8 @@
 
 {% block content %}
     <!-- [ Main Content ] start -->
-    <div class="pcoded-main-container">
+    <div class="pcoded-main-container" data-server_stats_api_domain="{{ server_stats_api_domain }}">
         <div class="pcoded-wrapper">
-
             <div class="pcoded-content">
                 <div class="pcoded-inner-content">
                     <!-- [ breadcrumb ] start -->
@@ -317,8 +316,8 @@
                                         </div> 
                                         <div class="card-block">
                                             <div class="tab-content">
-                                                <div class="table-responsive browser_users">
-                                                    <table class="table">
+                                                <div class="table-responsive ">
+                                                    <table class="table processes">
                                                         <thead class="thead-light">
                                                         <tr>
                                                             <th>{{ _("PID") }}</th>
@@ -330,7 +329,6 @@
                                                         </thead>
                                                         <tbody>
                                                         {% for process in data.processes %}
-                                                        
                                                                 <tr>
                                                                     <td>{{ process.pid }}</td>
                                                                     <td>{{ process.name }}</td>
@@ -560,11 +558,14 @@
                 },
                 options: {}
             }) 
-            
+        
+
+        const server_stats_api_domain = $(".pcoded-main-container").data('server_stats_api_domain')
+        const server_stats_api_url = server_stats_api_domain + "/api/dashboard/monitoring/"
         setInterval(function() {
             $.ajax({
                 type:"GET",
-                url: "/api/dashboard/monitoring/",
+                url: server_stats_api_url,
                 success: (response) => {
                     var now = new Date();
                     var time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
@@ -593,6 +594,18 @@
                     charts['data-disk_percent-chart'].update()
                     charts['data-user_activities-chart'].update()
                     charts['data-net_io_counters-chart'].update()
+
+                    proccesses_table_html = ''
+                    response.data.processes.forEach(process => {
+                        proccesses_table_html += `<tr>
+                            <td>${ process.pid }</td>
+                            <td>${ process.name }</td>
+                            <td>${ process.status }</td>
+                            <td>${ process.cpu_percent }</td>
+                            <td>${ process.memory_info[0] }</td>
+                        </tr>`
+                    });
+                    $('.table.processes tbody').html(proccesses_table_html)
                 }
                 })
             }, 3000);

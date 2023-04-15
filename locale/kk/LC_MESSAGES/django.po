@@ -151,3 +151,30 @@ msgstr "Пайдаланылған орын"
 
 msgid "free"
 msgstr "Қолжетімді"
+
+msgid "Disk"
+msgstr "Диск"
+
+msgid "Folders"
+msgstr "Папкалар"
+
+msgid "Files"
+msgstr "Файлдар"
+
+msgid "Location"
+msgstr "Орналасуы"
+
+msgid "Upload"
+msgstr "Жүктеп салу"
+
+msgid "Download"
+msgstr "Жүктеп алу"
+
+msgid "Recent Files"
+msgstr "Соңғы файлдар"
+
+msgid "Storage"
+msgstr "Диск Сақтауы"
+
+msgid "Last Modified"
+msgstr "Соңғы өзгертілген"

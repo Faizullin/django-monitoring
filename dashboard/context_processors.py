@@ -1,5 +1,7 @@
-def default_context(request):
-    # Define your default context values here
+def default_context(request = None):
     return {
-        'servers': ['server0','server1']
+        'servers': {
+            'server0' : 'http://localhost:8000',
+            'server1' : 'https://www.sys-monitoring.kz',
+        },
     }

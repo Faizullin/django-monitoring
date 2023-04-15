@@ -20,7 +20,7 @@
             data,
             success: (response) => {
               console.log(response)
-              if (response) {
+              if ((response.success)) {
                 modal.modal('hide');
                 location.reload();
               }
@@ -59,7 +59,7 @@
             contentType: false,
             data,
             success: (response) => {
-              if (response) {
+              if ((response.success)) {
                 modal.modal('hide');
                 location.reload();
               }

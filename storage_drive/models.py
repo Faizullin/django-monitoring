@@ -5,7 +5,7 @@ from django.db import models
 from dashboard.models import CustomUser
 from django.urls import reverse
 
-AVAILABLE_SPACE = 10
+AVAILABLE_SPACE = 1024*1024
 def get_space_available(request_user):
     folder_path = f'uploads/user_{request_user.pk}'
     if not default_storage.exists(folder_path):

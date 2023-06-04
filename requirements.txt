@@ -1,0 +1,16 @@
+﻿Django
+django-cors-headers
+django-factory-boy
+django-filter
+django-process
+django-seed
+django-softdelete
+django-tables2
+djangorestframework
+djangorestframework-simplejwt
+Faker
+Pillow
+psutil
+virtualenv
+psycopg2
+django-crontab
